@@ -57,7 +57,7 @@ color: antiquewhite;
 }
 
 .bgAguas{
-background-image: linear-gradient(rgba(0, 0, 0, 0.842),rgba(0,0,0,0.5)),url("../images/Theater.jpg");
+background-image: linear-gradient(rgba(0, 0, 0, 0.842),rgba(0,0,0,0.5)),url("images/Theater.jpg");
 background-size: cover;
 width: 100%; height: 100vh;
 background-color: black;
@@ -77,13 +77,6 @@ background-color: black;
     height: 100Vh;
 }
 
-.imgpla{
-    background-image: url("../images/honolulu.jpg");
-
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover 
-    }
 
 .td{
     text-decoration: underline dotted;
