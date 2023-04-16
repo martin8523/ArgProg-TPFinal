@@ -109,7 +109,8 @@ $.ajax({ method: "GET", url: "http://jsonplaceholder.typicode.com/users" })
             templateUL.appendChild(elem);
         });
         HTMLResponse.appendChild(templateUL);
-    })
+    }
+)
 
     function almacenavar(){
       var campoNombre = camponombre.value;
