@@ -87,21 +87,15 @@ $(document).ready(function(){
 const HTMLResponse = document.querySelector("#app");
 const templateUL = document.createElement(`ul`);
 
-$.ajax({ method: "GET", url: "http://jsonplaceholder.typicode.com/posts" })
+$.ajax({ method: "GET", url: "https://jsonplaceholder.typicode.com/posts" })
 
     //users: es la RESPUESTA DE LA PETICION
     .done(function (posts) {
-
-        //Mostrar por consola la respuesta de la API
         console.log(posts)
 
-        for (let index = 0; index < 6; index++) {
-         
-          
+        for (let index = 0; index < 6; index++) {                  
             let elem = document.createElement("button");
-            elem.appendChild(
-                document.createTextNode(`Titulo: ${posts[index].title}, Comentario: ${posts[index].body}`)
-            );
+            elem.appendChild(document.createTextNode(`Titulo: ${posts[index].title}, Comentario: ${posts[index].body}`));
             templateUL.appendChild(elem);
             HTMLResponse.appendChild(templateUL);
         }
