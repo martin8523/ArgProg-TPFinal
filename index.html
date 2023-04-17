@@ -205,6 +205,7 @@
     </div>
   </section>
   <section class="section mt-1" id="sectionform2">
+    <div class="form2">
     <br>
     <div class="container mt-5">
       <div class="row">
@@ -253,11 +254,11 @@
                         <label for="floatingTextarea2">Descripcion del proyecto</label>
                       </div>
                       <div class="form-floating">
-                        <select class="form-select" id="floatingSelectDisabled" aria-label="Floating label disabled select example" required>
-                          <option value="1">Conferencia</option>
-                          <option value="2">Performance visual</option>
-                          <option value="3">Performance Auditiva</option>
-                          <option value="4">Performance Auditiva y Visual</option>                   
+                        <select class="form-select" id="5" aria-label="Floating label disabled select example" required>
+                          <option value="Conferencia">Conferencia</option>
+                          <option value="Performance visual">Performance visual</option>
+                          <option value="Performance Auditiva">Performance Auditiva</option>
+                          <option value="Performance Auditiva y Visual">Performance Auditiva y Visual</option>                   
                         </select>
                         <label for="floatingSelect">Tipo de Evento</label>
                       </div>
@@ -280,35 +281,35 @@
                             <div class="row">
                               <div class="col-sm-1 col-md-1 col-lg-3 m-3">
                                 <label for="sonido">Iluminacion</label>                                
-                                <input type="checkbox" name="iluminacion" id="iluminacion">
+                                <input  type="checkbox" name="6" id="6">
                               </div>
                               <div class="col-sm-1 col-md-1 col-lg-3 m-3">
                                 <label for="sonido">Sonido</label>
-                                <input type="checkbox" name="sonido" id="sonido">
+                                <input  type="checkbox" name="7" id="7">
                               </div>
                               <div class="col-sm-1 col-md-1 col-lg-3 m-3">
                                 <label for="sonido">utikeria</label>
-                                <input type="checkbox" name="escena" id="escena">
+                                <input  type="checkbox" name="8" id="8">
                               </div>
                               <div class="col-sm-1 col-md-1 col-lg-3 m-3">
                                 <label for="sonido">Vestuario</label>
-                                <input type="checkbox" name="vestuario" id="vestuario">
+                                <input type="checkbox" name="9" id="9">
                               </div>
                             </div>
                             <hr>
                               <div class="row">
                                 <div class="col-sm-1 col-md-1 col-lg-3 m-3">
                                  <label for="extra1">logistica</label>
-                                <input type="checkbox" name="logistica" id="logistica">
+                                <input type="checkbox" name="10" id="10">
                                 </div>
                                 <div class="col-sm-1 col-md-1 col-lg-3 m-3">
                                   <label for="extra1">refrigerios</label>
-                                  <input type="checkbox" name="refrigerios" id="refrigerios">
+                                  <input  type="checkbox" name="11" id="11">
                                 </div>
 
                             </div>
                           </div>
-                          <button class="btn btn-light btn-block nextBtn pull-right justify-content-end" type="button" onclick="completar()">Next</button>
+                          <button class="btn btn-light btn-block nextBtn pull-right justify-content-end" type="button" onclick="almacenavar2(),completar()">Next</button>
                       </div>
                   </div>
              </div>
@@ -319,14 +320,41 @@
                           <h3> Resumen</h3>
                           <div class="row">
                             <div class="col">
+                              <div class="row"><p id="nrorand"></p></div>
                               <div class="mt-5"id="form2Hoja1">
                             </div>
                           </div>
-                          <button class="btn btn-light nextBtn btn-block pull-right" type="submit">Finish!</button>
+                          <button class="btn btn-light nextBtn btn-block pull-right" type="reset" data-bs-toggle="modal" data-bs-target="#exampleModal">Finish!</button>
                       </div>
                   </div>
              </div>
+            </div>
                       
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Enhorabuena!</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+       <div>
+        <p>
+          Se hafinalizado el proceso. <br>
+          En breve, un acesor se comunicara con usted para facilitarle el presupuesto
+          <br>
+          si lo decea puede descargar el resumen de su solicitud.
+        </p>
+       </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="go()">Close</button>
+        <button type="button" class="btn btn-primary" id="#btnCrearPdf">Crear PDF</button>
+      </div>
+    </div>
+  </div>
+</div>
                   </div>
               </div>
           </div>

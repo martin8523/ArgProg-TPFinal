@@ -82,7 +82,10 @@ $(document).ready(function(){
     location.href="#sectionform2";    
       }
 
-
+      function go() {
+        document.getElementById('sectionform2').style.display = 'none';
+        location.href="#maincontainter";    
+          }
 
 const HTMLResponse = document.querySelector("#app");
 const templateUL = document.createElement(`ul`);
@@ -103,23 +106,108 @@ $.ajax({ method: "GET", url: "https://jsonplaceholder.typicode.com/posts" })
         
 
   
-var camposHoja1 =[]
+var camposHoja =[]
 function almacenavar(){
-      for (let index = 0; index < 5; index++) {
-        camposHoja1[index] = document.getElementById(index).value
+      for (let index = 0; index <= 6; index++) {
+        camposHoja[index] = document.getElementById(index).value;
+      }
+    }
+
+
+function almacenavar2(){
+      for (let index = 6; index <= 11; index++) {
+        camposHoja[index] = document.getElementById(index).checked;
       }
     }
 
     const HTMLResponse2 = document.querySelector("#form2Hoja1");
-    const templateUL2 = document.createElement(`ul`);
+    const templateUL2 = document.createElement(`ol`);
+    const HTMLResponse3 = document.querySelector("#nrorand");
+    const templateUL3 = document.createElement(`ol`);
+    const numerorand = Math.random();
     function completar(){
+      console.log(camposHoja);
             let elem = document.createElement("p");
             elem.appendChild(
-                document.createTextNode("Nombre: " + camposHoja1[0]+"  Apellido: " +camposHoja1[1]+" Mail: " 
-                + camposHoja1[2]+" Fecha: " + camposHoja1[3]+"  Comentarios: " +camposHoja1[4])
-                
-            );
+                document.createTextNode("Nombre: " + camposHoja[0]+"  Apellido: " 
+                +camposHoja[1]+" Mail: "+ camposHoja[2]));
+            elem.appendChild(document.createElement("br"));
+            elem.appendChild(document.createTextNode(" Fecha del Evento: " + camposHoja[3]+
+            "Tipo de Evento: " + camposHoja[5]));
+            elem.appendChild(document.createElement("br"));
+            elem.appendChild(document.createTextNode("Comentarios: " +camposHoja[4]));
+            elem.appendChild(document.createElement("br"));
+            elem.appendChild(document.createTextNode("Especificaciones Tecnicas solicitadas: "));
+            elem.appendChild(document.createElement("br"));
+            elem.appendChild(document.createElement("br"));
+            if (camposHoja[6] == true) {
+              elem.appendChild(document.createTextNode("Iluminacion"));
+              elem.appendChild(document.createElement("br"));
+            };
+            if (camposHoja[7] == true) {
+              elem.appendChild(document.createTextNode("Sonido"));
+              elem.appendChild(document.createElement("br"));
+            };
+            if (camposHoja[8] == true) {
+              elem.appendChild(document.createTextNode("Escena"));
+              elem.appendChild(document.createElement("br"));
+            };
+            if (camposHoja[9] == true) {
+              elem.appendChild(document.createTextNode("Vestuario"));
+              elem.appendChild(document.createElement("br"));
+            };
+            if (camposHoja[10] == true) {
+              elem.appendChild(document.createTextNode("Logistica"));
+              elem.appendChild(document.createElement("br"));
+            };
+            if (camposHoja[11] == true) {
+              elem.appendChild(document.createTextNode("Refrigerio"));
+              elem.appendChild(document.createElement("br"));
+            };
+            elem.appendChild(document.createElement("br"));
             templateUL2.appendChild(elem);       
             HTMLResponse2.appendChild(templateUL2);
+            templateUL3.appendChild(numerorand)
+            HTMLResponse3.appendChild(templateUL3)
     }
-  
+    
+
+document.addEventListener("DOMContentLoaded", () => {
+  // Escuchamos el click del botón
+  const $boton = document.querySelector("#btnCrearPdf");
+  $boton.addEventListener("click", () => {
+      const $elementoParaConvertir = document.body; // <-- Aquí puedes elegir cualquier elemento del DOM
+      html2pdf()
+          .set({
+              margin: 1,
+              filename: 'documento.pdf',
+              image: {
+                  type: 'jpeg',
+                  quality: 0.98
+              },
+              html2canvas: {
+                  scale: 3, // A mayor escala, mejores gráficos, pero más peso
+                  letterRendering: true,
+              },
+              jsPDF: {
+                  unit: "in",
+                  format: "a3",
+                  orientation: 'portrait' // landscape o portrait
+              }
+          })
+          .from($elementoParaConvertir)
+          .save()
+          .output('.C:\Users\54234\Desktop\123123123.pdf', 'f')
+          .then(pdfResult => {
+              $.ajax({
+                  type: "POST",
+                  url: "/guardarPdf",
+                  data: `pdf=${pdfResult}`,
+                  success: function (res) {
+                      return true;
+                  }
+              });
+          })
+          .catch(err => console.log(err)); 
+  });
+});
