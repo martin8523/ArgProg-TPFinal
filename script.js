@@ -63,16 +63,8 @@ $(document).ready(function () {
 
 $(document).ready(function(){
   $("#form1").validate({
-    rules:{
-      floatingInput:{
-        required:true,
-        text:true
-      },
-      floatingPassword:{
-        required:true,
-        minlength:8
-      },
-    }
+    rules:{'nombre':{required:true,text:true},'email':{required:true}},
+    messages: {'name': "Por favor indica tu nombre",'email': "Por favor, indica una direcci&oacute;n de e-mail v&aacute;lida",'message': "Por favor, dime algo!"},
   });
   
   });
@@ -170,44 +162,3 @@ function almacenavar2(){
             templateUL3.appendChild(numerorand)
             HTMLResponse3.appendChild(templateUL3)
     }
-    
-
-document.addEventListener("DOMContentLoaded", () => {
-  // Escuchamos el click del botón
-  const $boton = document.querySelector("#btnCrearPdf");
-  $boton.addEventListener("click", () => {
-      const $elementoParaConvertir = document.body; // <-- Aquí puedes elegir cualquier elemento del DOM
-      html2pdf()
-          .set({
-              margin: 1,
-              filename: 'documento.pdf',
-              image: {
-                  type: 'jpeg',
-                  quality: 0.98
-              },
-              html2canvas: {
-                  scale: 3, // A mayor escala, mejores gráficos, pero más peso
-                  letterRendering: true,
-              },
-              jsPDF: {
-                  unit: "in",
-                  format: "a3",
-                  orientation: 'portrait' // landscape o portrait
-              }
-          })
-          .from($elementoParaConvertir)
-          .save()
-          .output('.C:\Users\54234\Desktop\123123123.pdf', 'f')
-          .then(pdfResult => {
-              $.ajax({
-                  type: "POST",
-                  url: "/guardarPdf",
-                  data: `pdf=${pdfResult}`,
-                  success: function (res) {
-                      return true;
-                  }
-              });
-          })
-          .catch(err => console.log(err)); 
-  });
-});
